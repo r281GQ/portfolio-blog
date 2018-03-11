@@ -1,14 +1,16 @@
 import React from 'react';
 
+import Container from './styled/container';
+import Title from './styled/title';
+
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
   const { frontmatter: { path, title } } = post;
   return (
-    <div>
-      {path}
-      {title}
+    <Container>
+      <Title title={title} />
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </div>
+    </Container>
   );
 };
 
