@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import './index.css';
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
     <Helmet
       title="Gatsby Default Starter"
       meta={[
@@ -20,11 +20,13 @@ const TemplateWrapper = ({ children }) => (
         margin: '0 auto',
         maxWidth: 960,
         padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0
+        paddingTop: 0,
+        flexGrow: 1
       }}
     >
       {children()}
     </div>
+    <div>footer</div>
   </div>
 );
 

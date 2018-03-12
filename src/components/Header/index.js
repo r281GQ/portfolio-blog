@@ -10,8 +10,9 @@ const Header = () => (
   >
     <div
       style={{
+        position: 'relative',
         margin: '0 auto',
-        maxWidth: 960,
+        maxWidth: 1400,
         padding: '1.45rem 1.0875rem'
       }}
     >
@@ -23,9 +24,16 @@ const Header = () => (
             textDecoration: 'none'
           }}
         >
-          Gatsby
+          Endre Vegh
         </Link>
       </h1>
+      <div style={{ position: 'absolute', right: 0, top: 0, height: '100%' }}>
+        <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+          <div style={{ flexBasis: 100, padding: 25 }}> Blog </div>
+          <div style={{ flexBasis: 100, padding: 25 }}> Projects </div>
+          <div style={{ flexBasis: 100, padding: 25 }}> Resume </div>
+        </div>
+      </div>
     </div>
   </div>
 );
