@@ -4,6 +4,7 @@ date: "2017-11-07"
 title: "My first blog post"
 ---
 
+
 **Original answer:** I'm not sure if you will like how mathematical courses typically introduce matrices. As a programmer you might be happier with grabbing any decent 3D graphics book. It should certainly have very concrete 3x3 matrices. Also find out the ones that will teach you [projective transformations][1] (projective geometry is a very beautiful area of low-dimensional geometry and easy to program).
 
 # Mini-course in matrix math with Python 3
@@ -270,3 +271,20 @@ If you don't know Python, `__call__` overloads the meaning of `(...)` for matric
 ## Addition
 
 Now, let's find out what else we can do with matrices. Reme
+=======
+# Title
+
+* list item
+
+```javascript
+var rt = [];
+```
+
+Hey
+
+![alt](https://laracasts.com/images/series/circles/do-you-react.png)
+
+This is a beautiful iframe:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dHHmUF9gs70" frameborder="0" allowfullscreen></iframe>
+

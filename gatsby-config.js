@@ -11,6 +11,23 @@ module.exports = {
         name: 'markdown-pages'
       }
     },
-    `gatsby-transformer-remark`
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          'gatsby-remark-prismjs',
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 590
+            }
+          },
+          {
+            resolve: 'gatsby-remark-responsive-iframe'
+          }
+        ]
+      }
+    }
   ]
 };
