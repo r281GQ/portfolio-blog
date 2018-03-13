@@ -4,7 +4,14 @@ const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
   const { frontmatter: { path, title } } = post;
   return (
-    <div>
+    <div
+      style={{
+        backgroundColor: 'white',
+        padding: 20,
+        borderWidth: 3,
+        borderRadius: 5
+      }}
+    >
       {path}
       {title}
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
