@@ -1,9 +1,8 @@
 ---
-path: "/blog/my-first-post"
-date: "2017-11-07"
-title: "My first blog post"
+path: "/blog/my-second-post"
+date: "2018-11-07"
+title: "My second blog post"
 ---
-
 
 **Original answer:** I'm not sure if you will like how mathematical courses typically introduce matrices. As a programmer you might be happier with grabbing any decent 3D graphics book. It should certainly have very concrete 3x3 matrices. Also find out the ones that will teach you [projective transformations][1] (projective geometry is a very beautiful area of low-dimensional geometry and easy to program).
 
@@ -62,11 +61,9 @@ but it's not much fun by itself. Let's add more useful methods:
             '''Multiplies the vector by a number'''
             return Vector(self.x * number, self.y * number)
 
-
-
 That makes things more interesting as we can now write:
 
- print(v + w \* 2)
+print(v + w \* 2)
 
 and get the answer `(19, 1)` nicely printed as a vector (if the examples look unfamiliar, think how this code would look in C++).
 
@@ -180,7 +177,7 @@ This `dilate` thing dilates the `x` and `y` axes in a possibly different way.
 
 I will use this `dilate` function to demonstrate a thing mathematicians call _commutativity_: that is, for every value of parameters `a`, `b`, `c`, `d` you can be sure that
 
- dilate(a, b) ? dilate(c, d) = dilate(c, d) ? dilate(a, b)
+dilate(a, b) ? dilate(c, d) = dilate(c, d) ? dilate(a, b)
 
 * **Exercise:** Prove it. Also, is it true that for all possible values of parameters those below would hold?
 
@@ -271,20 +268,3 @@ If you don't know Python, `__call__` overloads the meaning of `(...)` for matric
 ## Addition
 
 Now, let's find out what else we can do with matrices. Reme
-=======
-# Title
-
-* list item
-
-```javascript
-var rt = [];
-```
-
-Hey
-
-![alt](https://laracasts.com/images/series/circles/do-you-react.png)
-
-This is a beautiful iframe:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dHHmUF9gs70" frameborder="0" allowfullscreen></iframe>
-
