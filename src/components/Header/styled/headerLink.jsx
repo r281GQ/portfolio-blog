@@ -1,10 +1,9 @@
-import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 
 export const StyledLink = styled(Link)`
-  color: white;
-  text-decoration: ${({ active }) => (active ? `underlined` : `none`)};
+  color: ${({ active }) => (active ? `#D1C4E9` : `#B388FF`)};
+  text-decoration: none;
 `;
 
 export const StyledRightLinkWrapper = styled.div`

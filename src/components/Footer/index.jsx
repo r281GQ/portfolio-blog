@@ -1,3 +1,5 @@
 import React from 'react';
 
-export default () => <footer> FOOTER </footer>;
+import Name from './styled/name';
+
+export default () => <Name>2018 @ Endre Vegh </Name>;

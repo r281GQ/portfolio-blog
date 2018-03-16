@@ -1,37 +1,62 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { string, number, shape } from 'prop-types';
 
 import Container from './styled/container';
+import TitleImage from './styled/titleImage';
 import Title from './styled/title';
+import DetailsWrapper from './styled/detailsWrapper';
+import MetaWrapper from './styled/metaWrapper';
 
-const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data;
-  const { frontmatter: { path, title } } = post;
-  return (
-    <div
-      style={{
-        backgroundColor: 'white',
-        padding: 20,
-        borderWidth: 3,
-        borderRadius: 5
-      }}
-    >
-      {path}
-      {title}
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
-    </div>
-  );
-};
+import Tag from '../Shared/Tag';
+import Date from '../Shared/Date';
+
+import Content from './content';
+
+export default class BlogPost extends Component {
+  static propTypes = {
+    data: shape({
+      markdownRemark: shape({
+        frontmatter: shape({
+          title: string,
+          cover: string,
+          date: number,
+          type: string
+        }),
+        html: string
+      })
+    })
+  };
+
+  render() {
+    const { markdownRemark: post } = this.props.data;
+    const { frontmatter: { title, cover, date, type }, html } = post;
+
+    return (
+      <Container>
+        <TitleImage src={cover} />
+        <MetaWrapper>
+          <Title>{title}</Title>
+          <DetailsWrapper>
+            <Tag type={type} />
+            <Date date={date} />
+          </DetailsWrapper>
+        </MetaWrapper>
+        <Content content={html} />
+      </Container>
+    );
+  }
+}
 
 export const postQuery = graphql`
-  query BlogQuery($path: String!) {
+  query BlogPostQuery($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
-        path
         title
+        cover
+        date
+        type
       }
     }
   }
 `;
-
-export default BlogPost;
