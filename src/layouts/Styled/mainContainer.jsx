@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-export const MainContainer = styled.div`
+export default styled.div`
   background-color: #ede7f6;
   margin: 0 auto;
   max-width: 960px;

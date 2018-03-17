@@ -1,24 +1,53 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React, { Component } from 'react';
+import { string } from 'prop-types';
 
-import LeftLinkContainer from './leftLinkContainer';
-import RightLinkContainer from './rightLinkContainer';
-import { LinkWrapper } from './styled/linkWrapper';
-import { HeaderContainer } from './styled/headerContainer';
+import LinkContainer from './linkContainer';
+import LinkWrapper from './styled/linkWrapper';
+import HeaderContainer from './styled/headerContainer';
 
 const rightLinks = [
-  { path: '/blog', name: 'Blog' },
+  { path: '/', name: 'Home' },
+  { path: '/journal', name: 'Journal' },
   { path: '/projects', name: 'Projects' },
+  { path: '/about', name: 'About' },
   { path: '/resume', name: 'Resume' }
 ];
 
-const leftLink = { path: '/about', name: 'Blog' };
+const leftLinks = [
+  { path: '/journal/engineering', name: 'Engineering' },
+  { path: '/journal/spirituality', name: 'Spirituality' },
+  { path: '/journal/event', name: 'Event/Travel' },
+  { path: '/journal/nutrition', name: 'Nutrition' }
+];
 
-export default ({ activeLink }) => (
-  <HeaderContainer>
-    <LinkWrapper>
-      <LeftLinkContainer link={leftLink} activeLink={activeLink} />
-      <RightLinkContainer links={rightLinks} activeLink={activeLink} />
-    </LinkWrapper>
-  </HeaderContainer>
-);
+export default class Header extends Component {
+  static propTypes = {
+    activeLink: string
+  };
+
+  renderLeftLinkContainer = activeLink =>
+    activeLink.includes('/journal') && (
+      <LinkContainer
+        alignment="left"
+        links={leftLinks}
+        activeLink={activeLink}
+      />
+    );
+
+  render() {
+    const { activeLink } = this.props;
+
+    return (
+      <HeaderContainer>
+        <LinkWrapper>
+          {this.renderLeftLinkContainer(activeLink)}
+          <LinkContainer
+            alignment="right"
+            links={rightLinks}
+            activeLink={activeLink}
+          />
+        </LinkWrapper>
+      </HeaderContainer>
+    );
+  }
+}
