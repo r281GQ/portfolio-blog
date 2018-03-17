@@ -14,9 +14,10 @@ const rightLinks = [
 ];
 
 const leftLinks = [
+  { path: '/journal', name: 'All' },
   { path: '/journal/engineering', name: 'Engineering' },
   { path: '/journal/spirituality', name: 'Spirituality' },
-  { path: '/journal/event', name: 'Event/Travel' },
+  { path: '/journal/event', name: 'Event' },
   { path: '/journal/nutrition', name: 'Nutrition' }
 ];
 
@@ -27,9 +28,25 @@ export default class Header extends Component {
 
   renderLeftLinkContainer = activeLink =>
     activeLink.includes('/journal') && (
+      <div>
+        <LinkContainer
+          alignment="left"
+          links={[{ path: '/', name: 'Home' }]}
+          activeLink={activeLink}
+        />
+        <LinkContainer
+          alignment="right"
+          links={leftLinks}
+          activeLink={activeLink}
+        />
+      </div>
+    );
+
+  renderRightLinkContainer = activeLink =>
+    !activeLink.includes('/journal') && (
       <LinkContainer
-        alignment="left"
-        links={leftLinks}
+        alignment="right"
+        links={rightLinks}
         activeLink={activeLink}
       />
     );
@@ -41,11 +58,7 @@ export default class Header extends Component {
       <HeaderContainer>
         <LinkWrapper>
           {this.renderLeftLinkContainer(activeLink)}
-          <LinkContainer
-            alignment="right"
-            links={rightLinks}
-            activeLink={activeLink}
-          />
+          {this.renderRightLinkContainer(activeLink)}
         </LinkWrapper>
       </HeaderContainer>
     );
