@@ -14,7 +14,9 @@ exports.createPages = async ({
 }) => {
   const BlogPost = path.resolve('./src/components/BlogPost/index.jsx');
 
-  const result = await graphql(`
+  const Blog = path.resolve('./src/components/BlogPage/index.jsx');
+
+  const allEntries = await graphql(`
     {
       allMarkdownRemark {
         edges {
@@ -31,10 +33,42 @@ exports.createPages = async ({
     }
   `);
 
-  return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  allEntries.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.path,
       component: BlogPost
     });
+  });
+
+  createPage({
+    path: '/journal/engineering',
+    component: Blog,
+    context: {
+      tag: 'engineering'
+    }
+  });
+
+  createPage({
+    path: '/journal/spirituality',
+    component: Blog,
+    context: {
+      tag: 'spirituality'
+    }
+  });
+
+  createPage({
+    path: '/journal/event',
+    component: Blog,
+    context: {
+      tag: 'event'
+    }
+  });
+
+  createPage({
+    path: '/journal/nutrition',
+    component: Blog,
+    context: {
+      tag: 'nutrition'
+    }
   });
 };
