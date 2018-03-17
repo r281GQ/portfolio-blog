@@ -6,6 +6,7 @@ import Title from './styled/title';
 import Container from './styled/container';
 import DetailsWrapper from './styled/detailsWrapper';
 import ContentWrapper from './styled/contentWrapper';
+import PreviewImageWrapper from './styled/previewImageWrapper';
 
 import Link from './../Shared/Link';
 import PreviewContent from './content';
@@ -27,9 +28,11 @@ export default class BlogPreview extends Component {
 
     return (
       <Container>
-        <Link to={path}>
-          <PreviewImage src={cover} />
-        </Link>
+        <PreviewImageWrapper>
+          <Link to={path}>
+            <PreviewImage src={cover} />
+          </Link>
+        </PreviewImageWrapper>
         <ContentWrapper>
           <Link to={path}>
             <Title>{title}</Title>

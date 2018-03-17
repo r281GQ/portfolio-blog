@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { node, string } from 'prop-types';
+import { node } from 'prop-types';
 
 import StyledLink from './styled/link';
 
 export default class Link extends Component {
   static propTypes = {
-    children: node,
-    to: string
+    children: node
   };
 
   render() {
-    const { children, to } = this.props;
-    return <StyledLink to={to}>{children} </StyledLink>;
+    const { children } = this.props;
+    return <StyledLink {...this.props}>{children} </StyledLink>;
   }
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { string, shape, node } from 'prop-types';
+import { string, shape, element, node, func, oneOfType } from 'prop-types';
 import Helmet from 'react-helmet';
 
-import SiteContainer from './Styled/siteContainer';
-import MainContainer from './Styled/mainContainer';
+import SiteContainer from './styled/siteContainer';
+import MainContainer from './styled/mainContainer';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -12,7 +12,7 @@ import './index.css';
 
 export default class App extends Component {
   static propTypes = {
-    children: node,
+    children: oneOfType([node, element, func]),
     location: shape({ pathname: string })
   };
 

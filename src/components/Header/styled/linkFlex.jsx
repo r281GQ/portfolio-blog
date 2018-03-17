@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  padding: 10px;
-  flex-basis: 400px;
+  display: flex;
+  align-items: center;
+  height: 100%;
 `;

@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 export default styled.div`
   display: flex;
-  flex-direction: column;
-  width: 600px;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  width: 900px;
+  height: 350px;
   background-color: white;
   margin-bottom: 20px;
   border-width: 2px;
