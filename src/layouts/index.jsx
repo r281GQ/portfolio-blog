@@ -29,7 +29,9 @@ export default class App extends Component {
           ]}
         />
         <Header activeLink={pathname} />
-        <MainContainer>{children()}</MainContainer>
+        <MainContainer full={pathname === '/' ? true : false}>
+          {children()}
+        </MainContainer>
         <Footer />
       </SiteContainer>
     );

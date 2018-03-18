@@ -26,10 +26,10 @@ const determineColor = type => {
 };
 
 export default styled.span`
-  text-align: center;
+  ${props => props.size === 'small' && `font-size: 0.8rem;`} text-align: center;
   background-color: ${props => determineBackgroundColor(props.type)};
   color: ${props => determineColor(props.type)};
-  padding: 8px;
+  padding: ${props => (props.size === 'small' ? `2px` : `8px`)};
   letter-spacing: 3px;
   border-radius: 4px;
   text-transform: uppercase;
