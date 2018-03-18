@@ -1,15 +1,16 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  width: 900px;
-  height: 350px;
+  width: 300px;
+  height: 175px;
   background-color: #fafafa;
-  margin-bottom: 20px;
-  border-width: 2px;
+  border-width: 5px;
   border-radius: 5px;
+  border-color: black;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
   transition: all 200ms ease-in-out;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 

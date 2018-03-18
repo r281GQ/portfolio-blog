@@ -1,13 +1,28 @@
 import React from 'react';
-import Link from 'gatsby-link';
 
-const IndexPage = () => (
-  <div>
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Link to="/page-2/">Go to page 2</Link>
-  </div>
-);
+import IndexPage from './../components/IndexPage';
 
-export default IndexPage;
+export default props => <IndexPage {...props} />;
+
+export const allBlogPosts = graphql`
+  query allBlogPostsForIndex {
+    allMarkdownRemark(
+      limit: 5
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          html
+          id
+          frontmatter {
+            path
+            title
+            type
+            cover
+            date
+          }
+        }
+      }
+    }
+  }
+`;

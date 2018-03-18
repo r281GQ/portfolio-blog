@@ -10,11 +10,13 @@ export default class Tag extends Component {
   };
 
   render() {
-    const { type } = this.props;
+    const { type, size } = this.props;
 
     return (
-      <Link to={`/blog/${type}`} style={{ textDecoration: 'none' }}>
-        <Container type={type}>{type}</Container>
+      <Link to={`/journal/${type}`} style={{ textDecoration: 'none' }}>
+        <Container type={type} size={size}>
+          {type}
+        </Container>
       </Link>
     );
   }
