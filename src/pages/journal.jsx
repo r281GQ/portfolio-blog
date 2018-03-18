@@ -6,7 +6,7 @@ export default props => <BlogPage {...props} />;
 
 export const allBlogPost = graphql`
   query allBlogPosts {
-    allMarkdownRemark {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           html
