@@ -5,16 +5,16 @@ import BlogIndexPreviewItem from './blogIndexPreviewItem';
 
 export default class BlogIndexPreview extends Component {
   static propTypes = {
-    edges: any
+    journalEntries: any
   };
 
   render() {
-    const { edges } = this.props;
+    const { journalEntries } = this.props;
 
     return (
       <div>
-        {edges.map(
-          ({ node: { frontmatter: { path, title, type, date }, html } }) => (
+        {journalEntries.map(
+          ({ frontmatter: { path, title, type, date }, html }) => (
             <BlogIndexPreviewItem
               {...{ title, type, date, html, path }}
               key={path}
