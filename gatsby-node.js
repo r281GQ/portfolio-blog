@@ -14,11 +14,16 @@ exports.createPages = async ({
 }) => {
   const BlogPost = path.resolve('./src/components/BlogPost/index.jsx');
 
+  const Project = path.resolve('./src/components/Project/index.jsx');
+
   const Blog = path.resolve('./src/components/BlogPage/index.jsx');
 
   const allEntries = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        filter: { frontmatter: { category: { eq: "journal" } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
         edges {
           node {
             html
@@ -32,6 +37,33 @@ exports.createPages = async ({
       }
     }
   `);
+
+  const allProjects = await graphql(`
+    {
+      allMarkdownRemark(
+        filter: { frontmatter: { category: { eq: "project" } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+      ) {
+        edges {
+          node {
+            html
+            id
+            frontmatter {
+              path
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  allProjects.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: Project
+    });
+  });
 
   allEntries.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
