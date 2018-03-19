@@ -4,9 +4,10 @@ import IndexPage from './../components/IndexPage';
 
 export default props => <IndexPage {...props} />;
 
-export const allBlogPosts = graphql`
-  query allBlogPostsForIndex {
+export const allJournalIndexesForIndex = graphql`
+  query AllJournalIndexesForIndex {
     allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: "journal" } } }
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

@@ -47,8 +47,8 @@ export default class BlogPost extends Component {
   }
 }
 
-export const postQuery = graphql`
-  query BlogPostQuery($path: String!) {
+export const journalQuery = graphql`
+  query JournalQuery($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
