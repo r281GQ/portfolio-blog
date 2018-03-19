@@ -7,7 +7,6 @@ export default props => <IndexPage {...props} />;
 export const allJournalIndexesForIndex = graphql`
   query AllJournalIndexesForIndex {
     allMarkdownRemark(
-      filter: { frontmatter: { category: { eq: "journal" } } }
       limit: 5
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -21,6 +20,7 @@ export const allJournalIndexesForIndex = graphql`
             type
             cover
             date
+            category
           }
         }
       }

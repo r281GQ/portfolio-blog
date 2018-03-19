@@ -17,6 +17,13 @@ export default class Index extends Component {
     })
   };
 
+  getItems = (edges, categoryType) =>
+    edges
+      .filter(
+        ({ node: { frontmatter: { category } } }) => category === categoryType
+      )
+      .map(({ node }) => node);
+
   render() {
     const { data: { allMarkdownRemark: { edges } } } = this.props;
 
@@ -25,8 +32,8 @@ export default class Index extends Component {
         <Welcome />
         <FlexContainer>
           <AboutPreview />
-          <BlogIndexPreview edges={edges} />
-          <ProjectPreview />
+          <BlogIndexPreview journalEntries={this.getItems(edges, 'journal')} />
+          <ProjectPreview projects={this.getItems(edges, 'project')} />
         </FlexContainer>
       </div>
     );
