@@ -2,6 +2,7 @@
 path: "/journal/my-third-post"
 type: "event"
 date: 1462406400
+category: "journal"
 title: "My third blog post"
 cover: "http://brotherword.org/wp-content/uploads/2016/08/BrotherWord-Wall.jpg"
 ---

@@ -4,9 +4,12 @@ import BlogPage from '../components/BlogPage';
 
 export default props => <BlogPage {...props} />;
 
-export const allBlogPost = graphql`
-  query allBlogPosts {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+export const allJournals = graphql`
+  query AllJournals {
+    allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: "journal" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           html

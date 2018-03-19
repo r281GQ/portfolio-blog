@@ -1,5 +1,6 @@
 ---
 path: "/journal/my-first-post"
+category: "journal"
 type: "spirituality"
 date: 1521232685
 title: "My first blog post"
