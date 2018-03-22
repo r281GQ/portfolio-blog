@@ -10,7 +10,8 @@ import styled from 'styled-components';
 // `;
 
 export default styled.div`
-  background-color: #ede7f6;
+  background-color: #fafafa;
+  color: #212121;
   padding-top: 0;
   flex-direction: column;
   flex-grow: 1;

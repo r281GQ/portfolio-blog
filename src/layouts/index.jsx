@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { string, shape, element, node, func, oneOfType } from 'prop-types';
 import Helmet from 'react-helmet';
 
+import styled, { ThemeProvider } from 'styled-components';
+
 import SiteContainer from './styled/siteContainer';
 import MainContainer from './styled/mainContainer';
 
@@ -20,20 +22,22 @@ export default class App extends Component {
     const { children, location: { pathname } } = this.props;
 
     return (
-      <SiteContainer>
-        <Helmet
-          title="Endre Vegh"
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' }
-          ]}
-        />
-        <Header activeLink={pathname} />
-        <MainContainer full={pathname === '/' ? true : false}>
-          {children()}
-        </MainContainer>
-        <Footer />
-      </SiteContainer>
+      <ThemeProvider theme={{ stuff: 'red' }}>
+        <SiteContainer>
+          <Helmet
+            title="Endre Vegh"
+            meta={[
+              { name: 'description', content: 'Sample' },
+              { name: 'keywords', content: 'sample, something' }
+            ]}
+          />
+          <Header activeLink={pathname} />
+          <MainContainer full={pathname === '/' ? true : false}>
+            {children()}
+          </MainContainer>
+          <Footer />
+        </SiteContainer>
+      </ThemeProvider>
     );
   }
 }
