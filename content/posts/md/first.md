@@ -4,7 +4,7 @@ category: "journal"
 type: "spirituality"
 date: 1521232685
 title: "My first blog post"
-cover: "https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-634130.jpg"
+cover: "gery_mountains.jpg"
 ---
 
 **Original answer:** I'm not sure if you will like how mathematical courses typically introduce matrices. As a programmer you might be happier with grabbing any decent 3D graphics book. It should certainly have very concrete 3x3 matrices. Also find out the ones that will teach you [projective transformations][1] (projective geometry is a very beautiful area of low-dimensional geometry and easy to program).

@@ -1,13 +1,5 @@
 ---
-path: "/projects/blogt"
 category: "about"
-type: "own"
-date: 1521332685
-title: "blog"
-cover: "http://mvish.com/images/post/gatsby-blazing-fast-static-site-generator-for-react.png"
-deploymentlink: "www.whatever.hu"
-githublink: "www.whatver.co"
-intro: "Hey this stuff is gonna be awesome!!!!"
 ---
 
 Lorem ipsum dolor amet quinoa whatever small batch subway tile seitan, gluten-free shoreditch asymmetrical drinking vinegar waistcoat microdosing hashtag cardigan. Williamsburg pok pok disrupt, master cleanse affogato gluten-free put a bird on it keytar ugh post-ironic keffiyeh trust fund normcore kogi. Palo santo occupy ugh +1 tousled flexitarian. Lomo celiac chambray austin yuccie intelligentsia, authentic stumptown normcore blue bottle fam tilde lumbersexual. Poutine succulents fam banh mi ethical literally.
