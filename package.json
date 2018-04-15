@@ -23,9 +23,11 @@
     "icons": "^1.0.0",
     "moment": "^2.21.0",
     "prop-types": "^15.6.1",
+    "react-disqus-thread": "^0.4.0",
     "react-helmet": "^5.2.0",
     "react-share": "^2.0.0",
     "react-social": "^1.10.0",
+    "react-social-icons": "^2.8.1",
     "styled-components": "^3.2.1"
   },
   "keywords": [
