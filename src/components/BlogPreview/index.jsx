@@ -26,11 +26,14 @@ export default class BlogPreview extends Component {
   render() {
     const { path, title, html, type, cover, date } = this.props;
 
+    // eslint-disable-next-line
+    const image = require(`../../../content/pictures/${cover}`);
+
     return (
       <Container>
         <PreviewImageWrapper>
           <Link to={path}>
-            <PreviewImage src={cover} />
+            <PreviewImage src={image} />
           </Link>
         </PreviewImageWrapper>
         <ContentWrapper>

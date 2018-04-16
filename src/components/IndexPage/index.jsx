@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { any, arrayOf, shape } from 'prop-types';
 
 import FlexContainer from './styled/flexContainer';
+import Container from './styled/container';
 
 import AboutPreview from '../AboutIndexPreview';
 import BlogIndexPreview from '../BlogIndexPreview';
@@ -28,14 +29,14 @@ export default class Index extends Component {
     const { data: { allMarkdownRemark: { edges } } } = this.props;
 
     return (
-      <div>
+      <Container>
         <Welcome />
         <FlexContainer>
           <AboutPreview />
           <BlogIndexPreview journalEntries={this.getItems(edges, 'journal')} />
           <ProjectPreview projects={this.getItems(edges, 'project')} />
         </FlexContainer>
-      </div>
+      </Container>
     );
   }
 }

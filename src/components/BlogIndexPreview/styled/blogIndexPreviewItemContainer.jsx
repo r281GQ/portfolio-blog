@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  width: 300px;
   height: 175px;
   background-color: #fafafa;
   border-width: 5px;
