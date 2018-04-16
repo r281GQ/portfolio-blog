@@ -59,14 +59,22 @@ export default class Journal extends Component {
             />
           )
         )}
+        <div>Page number to be implemented here</div>
       </Container>
     );
   }
 }
 
 export const allBlogPost = graphql`
-  query filterBlogPosts($tag: String!) {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: $tag } } }) {
+  query filterBlogPosts($tag: String, $skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: { type: { eq: $tag }, category: { eq: "journal" } }
+      }
+      skip: $skip
+      limit: $limit
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           html

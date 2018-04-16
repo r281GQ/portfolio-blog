@@ -72,6 +72,20 @@ exports.createPages = async ({
     });
   });
 
+  const ENTRIES_PER_PAGE = 2;
+
+  allEntries.data.allMarkdownRemark.edges.forEach((item, number) => {
+    if (number % ENTRIES_PER_PAGE === 0)
+      createPage({
+        path: `/journal/${number / ENTRIES_PER_PAGE + 1}`,
+        component: Blog,
+        context: {
+          limit: ENTRIES_PER_PAGE,
+          skip: number
+        }
+      });
+  });
+
   createPage({
     path: '/journal/engineering',
     component: Blog,
