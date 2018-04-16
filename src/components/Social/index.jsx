@@ -13,14 +13,18 @@ const networks = [
 ];
 
 export default class Social extends Component {
-  _renderIcons = networks =>
+  renderIcons = ({ vertical }, networks) =>
     networks.map(props => (
-      <IconWrapper key={props.network}>
+      <IconWrapper vertical={vertical} key={props.network}>
         <SocialIcon {...props} />
       </IconWrapper>
     ));
 
   render() {
-    return <Container>{this._renderIcons(networks)}</Container>;
+    return (
+      <Container {...this.props}>
+        {this.renderIcons(this.props, networks)}
+      </Container>
+    );
   }
 }

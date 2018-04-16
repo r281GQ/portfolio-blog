@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export default styled.img`
   display: block;
   max-width: 230px;
-  max-height: 95px;
+  max-height: 180px;
   width: auto;
   height: auto;
   border-radius: 100%;

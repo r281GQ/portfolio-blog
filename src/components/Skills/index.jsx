@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-export default class BlogIndexPreview extends Component {
+export default class Skills extends Component {
   render() {
-    return <div>sdfsd</div>;
+    return <div />;
   }
 }

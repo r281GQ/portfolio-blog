@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export default styled.div`
   width: 100%;
   height: 100%;
-  max-width: 150px;
-
+  flex-grow: 1;
   display: block;
   background-image: url(${props => props.src});
   background-size: cover;
