@@ -4,6 +4,7 @@ module.exports = {
   twitter_url: `https://twitter.com/endre_vegh`,
   siteUrl: 'http://localhost:8000/',
   siteTitle: '',
+  siteTitleAlt: '',
   siteDescription: '',
   siteLogo: '',
   pathPrefix: '/'
