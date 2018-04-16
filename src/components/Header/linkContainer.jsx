@@ -26,7 +26,13 @@ export default class LinkContainer extends Component {
         <LinkFlex>
           {links.map(({ path, name }) => (
             <LinkFlexWrapper key={path}>
-              <Link to={path} active={activeLink === path}>
+              <Link
+                to={path}
+                active={
+                  (activeLink === path && activeLink !== '/journal') ||
+                  (name === 'All' && activeLink === '/journal')
+                }
+              >
                 {name}
               </Link>
             </LinkFlexWrapper>

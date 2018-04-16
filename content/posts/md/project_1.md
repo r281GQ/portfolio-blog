@@ -1,10 +1,10 @@
 ---
-path: "/projects/blogt"
+path: "/projects/blog"
 category: "project"
 type: "own"
 date: 1521332685
 title: "blog"
-cover: "http://mvish.com/images/post/gatsby-blazing-fast-static-site-generator-for-react.png"
+cover: "gatsby.png"
 deploymentlink: "www.whatever.hu"
 githublink: "www.whatver.co"
 intro: "Hey this stuff is gonna be awesome!!!!"

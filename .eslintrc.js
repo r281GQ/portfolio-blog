@@ -43,7 +43,9 @@ module.exports = {
   globals: {
     __DEV__: true,
     fetch: true,
-    graphql: true
+    graphql: true,
+    document: true,
+    window: true
   },
   env: {}
 };

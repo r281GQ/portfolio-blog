@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { shape, string } from 'prop-types';
 
 import Intro from './styled/intro';
 import Container from './styled/container';
@@ -12,6 +13,21 @@ import Cover from './styled/cover';
 import Link from '../Shared/Link';
 
 export default class Project extends Component {
+  static propTypes = {
+    data: shape({
+      markdownRemark: shape({
+        frontmatter: shape({
+          title: string,
+          cover: string,
+          intro: string,
+          githublink: string,
+          deploymentlink: string
+        }),
+        html: string
+      })
+    })
+  };
+
   render() {
     const {
       data: {
@@ -22,9 +38,12 @@ export default class Project extends Component {
       }
     } = this.props;
 
+    // eslint-disable-next-line
+    const image = require(`../../../content/pictures/${cover}`);
+
     return (
       <Container>
-        <Cover src={cover} />
+        <Cover src={image} />
         <Title>{title}</Title>
         <Intro>{intro}</Intro>
         <LinkContainer>

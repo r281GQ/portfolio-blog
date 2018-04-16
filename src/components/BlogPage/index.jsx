@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { string, number, shape, arrayOf } from 'prop-types';
 
+import Container from './styled/container';
+
 import BlogPreview from '../../components/BlogPreview';
 
 export default class Journal extends Component {
@@ -46,7 +48,7 @@ export default class Journal extends Component {
     const { data: { allMarkdownRemark: { edges } } } = this.props;
 
     return (
-      <div>
+      <Container>
         {edges.map(
           ({
             node: { frontmatter: { path, title, type, cover, date }, html }
@@ -57,7 +59,7 @@ export default class Journal extends Component {
             />
           )
         )}
-      </div>
+      </Container>
     );
   }
 }

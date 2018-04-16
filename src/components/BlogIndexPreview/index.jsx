@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { any } from 'prop-types';
 
+import Title from './styled/title';
+import Container from './styled/container';
+
 import BlogIndexPreviewItem from './blogIndexPreviewItem';
 
 export default class BlogIndexPreview extends Component {
@@ -12,7 +15,8 @@ export default class BlogIndexPreview extends Component {
     const { journalEntries } = this.props;
 
     return (
-      <div>
+      <Container>
+        <Title>Journal entries</Title>
         {journalEntries.map(
           ({ frontmatter: { path, title, type, date }, html }) => (
             <BlogIndexPreviewItem
@@ -21,7 +25,7 @@ export default class BlogIndexPreview extends Component {
             />
           )
         )}
-      </div>
+      </Container>
     );
   }
 }

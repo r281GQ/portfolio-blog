@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import AboutContainer from './styled/aboutContainer';
 import TextWrapper from './styled/textWrapper';
 
-import Link from '../Shared/Link';
+import Link from './styled/link';
 import Avatar from '../Shared/Avatar';
 
-import profile from '../../../content/home/profile.jpg';
+import profile from '../../../content/pictures/profile.jpg';
 
 export default class AboutPreview extends Component {
   render() {

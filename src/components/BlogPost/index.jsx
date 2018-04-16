@@ -9,8 +9,8 @@ import MetaWrapper from './styled/metaWrapper';
 
 import Tag from '../Shared/Tag';
 import Date from '../Shared/Date';
-
 import Content from './content';
+import Social from '../Social';
 
 export default class BlogPost extends Component {
   static propTypes = {
@@ -27,13 +27,48 @@ export default class BlogPost extends Component {
     })
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: false,
+      available: true
+    };
+  }
+
+  toggleSideBar = () => {
+    if (window.scrollY > window.innerHeight) {
+      this.setState({ visible: true });
+    }
+
+    if (window.scrollY < window.innerHeight) {
+      this.setState({ visible: false });
+    }
+  };
+
+  componentDidMount() {
+    this.setState({
+      available:
+        document.body.scrollHeight < window.outerHeight + 500 ? false : true
+    });
+
+    window.addEventListener('scroll', this.toggleSideBar);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.toggleSideBar);
+  }
+
   render() {
     const { markdownRemark: post } = this.props.data;
     const { frontmatter: { title, cover, date, type }, html } = post;
 
+    // eslint-disable-next-line
+    const image = require(`../../../content/pictures/${cover}`);
+
     return (
       <Container>
-        <TitleImage src={cover} />
+        <TitleImage src={image} />
         <MetaWrapper>
           <Title>{title}</Title>
           <DetailsWrapper>
@@ -42,6 +77,11 @@ export default class BlogPost extends Component {
           </DetailsWrapper>
         </MetaWrapper>
         <Content content={html} />
+        {this.state.available ? (
+          <Social vertical visible={this.state.visible} />
+        ) : (
+          <Social vertical={false} visible={true} />
+        )}
       </Container>
     );
   }
@@ -52,6 +92,7 @@ export const journalQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
+        description
         title
         cover
         date
