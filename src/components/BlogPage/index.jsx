@@ -4,6 +4,7 @@ import { string, number, shape, arrayOf } from 'prop-types';
 import Container from './styled/container';
 
 import BlogPreview from '../../components/BlogPreview';
+import Link from '../../components/Shared/Link';
 
 export default class Journal extends Component {
   static propTypes = {
@@ -25,6 +26,7 @@ export default class Journal extends Component {
   };
 
   render() {
+    console.log(this.props);
     if (
       !this.props.data ||
       (this.props.data && !this.props.data.allMarkdownRemark)
@@ -59,7 +61,16 @@ export default class Journal extends Component {
             />
           )
         )}
-        <div>Page number to be implemented here</div>
+        {this.props.pathContext.currentPage !== 1 && (
+          <Link to={`/journal/${this.props.pathContext.currentPage - 1}`}>
+            previoues
+          </Link>
+        )}
+        {this.props.pathContext.hasNext && (
+          <Link to={`/journal/${this.props.pathContext.currentPage + 1}`}>
+            next
+          </Link>
+        )}
       </Container>
     );
   }
