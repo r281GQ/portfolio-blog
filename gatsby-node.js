@@ -76,8 +76,9 @@ exports.createPages = async ({
 
   const ENTRIES_PER_PAGE = 2;
 
-  allEntries.data.allMarkdownRemark.edges.forEach((item, number, array) => {
-    if (number % ENTRIES_PER_PAGE === 0) {
+  allEntries.data.allMarkdownRemark.edges.forEach(
+    (item, number, array) =>
+      number % ENTRIES_PER_PAGE === 0 &&
       createPage({
         path: `/journal/${number / ENTRIES_PER_PAGE + 1}`,
         component: Blog,
@@ -87,9 +88,8 @@ exports.createPages = async ({
           currentPage: number / ENTRIES_PER_PAGE + 1,
           hasNext: array.length >= number + ENTRIES_PER_PAGE
         }
-      });
-    }
-  });
+      })
+  );
 
   const SPIRITUALITY = `spirituality`;
   const ENGINEERING = `engineering`;
@@ -98,7 +98,7 @@ exports.createPages = async ({
 
   const types = [SPIRITUALITY, ENGINEERING, NUTRITION, EVENT];
 
-  types.forEach(tag => {
+  types.forEach(tag =>
     allEntries.data.allMarkdownRemark.edges
       .filter(({ node }) => node.frontmatter.type === tag)
       .forEach((item, number, array) => {
@@ -115,6 +115,6 @@ exports.createPages = async ({
             }
           });
         }
-      });
-  });
+      })
+  );
 };
