@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { string, number, shape, arrayOf } from 'prop-types';
+import { string, number, bool, shape, arrayOf } from 'prop-types';
 
 import Container from './styled/container';
 
 import BlogPreview from '../../components/BlogPreview';
-import Link from '../../components/Shared/Link';
+import PaginationLinks from './paginationLinks';
 
 export default class Journal extends Component {
   static propTypes = {
+    pathContext: shape({
+      tag: string,
+      currentPage: number,
+      hasNext: bool
+    }),
     data: shape({
       allMarkdownRemark: shape({
         edges: arrayOf(
@@ -26,7 +31,6 @@ export default class Journal extends Component {
   };
 
   render() {
-    console.log(this.props);
     if (
       !this.props.data ||
       (this.props.data && !this.props.data.allMarkdownRemark)
@@ -47,7 +51,12 @@ export default class Journal extends Component {
       );
     }
 
-    const { data: { allMarkdownRemark: { edges } } } = this.props;
+    const {
+      data: { allMarkdownRemark: { edges } },
+      pathContext: { tag, currentPage, hasNext }
+    } = this.props;
+
+    const paginationLinksProps = { tag, currentPage, hasNext };
 
     return (
       <Container>
@@ -61,16 +70,7 @@ export default class Journal extends Component {
             />
           )
         )}
-        {this.props.pathContext.currentPage !== 1 && (
-          <Link to={`/journal/${this.props.pathContext.currentPage - 1}`}>
-            previoues
-          </Link>
-        )}
-        {this.props.pathContext.hasNext && (
-          <Link to={`/journal/${this.props.pathContext.currentPage + 1}`}>
-            next
-          </Link>
-        )}
+        <PaginationLinks {...paginationLinksProps} />
       </Container>
     );
   }
