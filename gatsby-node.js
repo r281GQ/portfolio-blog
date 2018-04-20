@@ -30,6 +30,8 @@ exports.createPages = async ({
             id
             frontmatter {
               path
+              type
+              category
               title
             }
           }
@@ -72,35 +74,47 @@ exports.createPages = async ({
     });
   });
 
-  createPage({
-    path: '/journal/engineering',
-    component: Blog,
-    context: {
-      tag: 'engineering'
-    }
-  });
+  const ENTRIES_PER_PAGE = 2;
 
-  createPage({
-    path: '/journal/spirituality',
-    component: Blog,
-    context: {
-      tag: 'spirituality'
-    }
-  });
+  allEntries.data.allMarkdownRemark.edges.forEach(
+    (item, number, array) =>
+      number % ENTRIES_PER_PAGE === 0 &&
+      createPage({
+        path: `/journal/${number / ENTRIES_PER_PAGE + 1}`,
+        component: Blog,
+        context: {
+          limit: ENTRIES_PER_PAGE,
+          skip: number,
+          currentPage: number / ENTRIES_PER_PAGE + 1,
+          hasNext: array.length >= number + ENTRIES_PER_PAGE
+        }
+      })
+  );
 
-  createPage({
-    path: '/journal/event',
-    component: Blog,
-    context: {
-      tag: 'event'
-    }
-  });
+  const SPIRITUALITY = `spirituality`;
+  const ENGINEERING = `engineering`;
+  const NUTRITION = `nutrition`;
+  const EVENT = `event`;
 
-  createPage({
-    path: '/journal/nutrition',
-    component: Blog,
-    context: {
-      tag: 'nutrition'
-    }
-  });
+  const types = [SPIRITUALITY, ENGINEERING, NUTRITION, EVENT];
+
+  types.forEach(tag =>
+    allEntries.data.allMarkdownRemark.edges
+      .filter(({ node }) => node.frontmatter.type === tag)
+      .forEach((item, number, array) => {
+        if (number % ENTRIES_PER_PAGE === 0) {
+          createPage({
+            path: `/journal/${tag}/${number / ENTRIES_PER_PAGE + 1}`,
+            component: Blog,
+            context: {
+              tag,
+              limit: ENTRIES_PER_PAGE,
+              skip: number,
+              currentPage: number / ENTRIES_PER_PAGE + 1,
+              hasNext: array.length > number + ENTRIES_PER_PAGE
+            }
+          });
+        }
+      })
+  );
 };

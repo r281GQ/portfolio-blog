@@ -7,18 +7,18 @@ import HeaderContainer from './styled/headerContainer';
 
 const rightLinks = [
   { path: '/', name: 'Home' },
-  { path: '/journal', name: 'Journal' },
+  { path: '/journal/1', name: 'Journal' },
   { path: '/projects', name: 'Projects' },
   { path: '/about', name: 'About' },
   { path: '/resume', name: 'Resume' }
 ];
 
 const leftLinks = [
-  { path: '/journal', name: 'All' },
-  { path: '/journal/engineering', name: 'Code' },
-  { path: '/journal/spirituality', name: 'Spirituality' },
-  { path: '/journal/event', name: 'Event' },
-  { path: '/journal/nutrition', name: 'Nutrition' }
+  { path: '/journal/1', name: 'All' },
+  { path: '/journal/engineering/1', name: 'Code' },
+  { path: '/journal/spirituality/1', name: 'Spirituality' },
+  { path: '/journal/event/1', name: 'Event' },
+  { path: '/journal/nutrition/1', name: 'Nutrition' }
 ];
 
 export default class Header extends Component {

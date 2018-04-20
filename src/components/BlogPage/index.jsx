@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import { string, number, shape, arrayOf } from 'prop-types';
+import { string, number, bool, shape, arrayOf } from 'prop-types';
 
 import Container from './styled/container';
 
 import BlogPreview from '../../components/BlogPreview';
+import PaginationLinks from './paginationLinks';
 
 export default class Journal extends Component {
   static propTypes = {
+    pathContext: shape({
+      tag: string,
+      currentPage: number,
+      hasNext: bool
+    }),
     data: shape({
       allMarkdownRemark: shape({
         edges: arrayOf(
@@ -45,7 +51,12 @@ export default class Journal extends Component {
       );
     }
 
-    const { data: { allMarkdownRemark: { edges } } } = this.props;
+    const {
+      data: { allMarkdownRemark: { edges } },
+      pathContext: { tag, currentPage, hasNext }
+    } = this.props;
+
+    const paginationLinksProps = { tag, currentPage, hasNext };
 
     return (
       <Container>
@@ -59,14 +70,22 @@ export default class Journal extends Component {
             />
           )
         )}
+        <PaginationLinks {...paginationLinksProps} />
       </Container>
     );
   }
 }
 
 export const allBlogPost = graphql`
-  query filterBlogPosts($tag: String!) {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: $tag } } }) {
+  query filterBlogPosts($tag: String, $skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: { type: { eq: $tag }, category: { eq: "journal" } }
+      }
+      skip: $skip
+      limit: $limit
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           html
