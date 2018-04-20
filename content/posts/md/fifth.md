@@ -1,10 +1,10 @@
 ---
-path: "/journal/my-second-post"
+path: "/journal/my-fifth-post"
 category: "journal"
 type: "engineering"
 date: 1462406400
 description: "Blog short descriptopn"
-title: "My second blog post" 
+title: "My fifth blog post" 
 cover: "meditation.jpg"
 ---
 
