@@ -21,12 +21,20 @@ export default class Index extends Component {
   getItems = (edges, categoryType) =>
     edges
       .filter(
-        ({ node: { frontmatter: { category } } }) => category === categoryType
+        ({
+          node: {
+            frontmatter: { category }
+          }
+        }) => category === categoryType
       )
       .map(({ node }) => node);
 
   render() {
-    const { data: { allMarkdownRemark: { edges } } } = this.props;
+    const {
+      data: {
+        allMarkdownRemark: { edges }
+      }
+    } = this.props;
 
     return (
       <Container>

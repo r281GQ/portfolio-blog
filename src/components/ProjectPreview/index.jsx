@@ -17,8 +17,13 @@ export default class Project extends Component {
     })
   };
 
-  render() {
-    const { project: { frontmatter: { path, cover }, html } } = this.props;
+  render = () => {
+    const {
+      project: {
+        frontmatter: { path, cover },
+        html
+      }
+    } = this.props;
 
     // eslint-disable-next-line
     const image = require(`../../../content/pictures/${cover}`);
@@ -31,5 +36,5 @@ export default class Project extends Component {
         </CardContainer>
       </Link>
     );
-  }
+  };
 }
