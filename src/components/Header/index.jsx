@@ -43,7 +43,7 @@ export default class Header extends Component {
     />
   );
 
-  render() {
+  render = () => {
     const { activeLink } = this.props;
 
     return (
@@ -54,5 +54,5 @@ export default class Header extends Component {
         </LinkWrapper>
       </HeaderContainer>
     );
-  }
+  };
 }

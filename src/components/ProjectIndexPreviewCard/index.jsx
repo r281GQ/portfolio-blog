@@ -19,7 +19,11 @@ export default class Card extends Component {
   };
 
   render() {
-    const { project: { frontmatter: { path, title, cover } } } = this.props;
+    const {
+      project: {
+        frontmatter: { path, title, cover }
+      }
+    } = this.props;
 
     // eslint-disable-next-line
     const image = require(`../../../content/pictures/${cover}`);

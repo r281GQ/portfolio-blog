@@ -14,6 +14,7 @@ module.exports = {
       }
     },
     `gatsby-transformer-remark`,
+    `gatsby-plugin-remove-trailing-slashes`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
